@@ -9,13 +9,12 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class NoteSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=True, read_only=True)
-    tag_ids = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=Tag.objects.all(), write_only=True, source='tags'
-    )
+    tag_ids = serializers.PrimaryKeyRelatedField(queryset=Tag.objects.all(), many=True, write_only=True)
+    tags = TagSerializer(read_only=True, many=True)
+
     class Meta:
         model = Note
-        fields = ['id', 'title', 'content', 'tags', 'pinned', 'is_archived', 'reminder_time', 'created_at', 'updated_at']
+        fields = ['id', 'title', 'content', 'created_at', 'tag_ids', 'tags']
 
 
 class TagSerializer(serializers.ModelSerializer):
