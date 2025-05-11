@@ -14,3 +14,9 @@ class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
         fields = ['id', 'title', 'content', 'tags', 'pinned', 'is_archived', 'reminder_time', 'created_at', 'updated_at']
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'
