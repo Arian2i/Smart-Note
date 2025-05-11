@@ -4,7 +4,7 @@ from .serializers import NoteSerializer
 from .models import Note
 
 
-class NoteCreateView(generics.ListCreateAPIView):
+class NoteListCreateView(generics.ListCreateAPIView):
     serializer_class = NoteSerializer
     permission_classes = [permissions.IsAuthenticated]
     
